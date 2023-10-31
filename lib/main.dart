@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list/todo_page.dart';
+import 'package:todo_list/todo_app.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return TodoPage();
+    return MaterialApp(
+      title: 'Todo-List App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const TodoApp(),
+    );
   }
 }
