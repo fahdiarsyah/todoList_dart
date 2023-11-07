@@ -1,30 +1,31 @@
 class Todo {
-  final int id;
-  final String title;
-  final String description;
-  final bool completed;
-  Todo({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.completed,
-  });
+  int? id;
+  String nama;
+  String deksripsi;
+  bool done;
+
+  Todo(this.nama, this.deksripsi, {this.done = false, this.id});
+
+  static List<Todo> dummyData = [
+    Todo("Latihan nyetir", "Menyetir mobil jam 7", done: true),
+    Todo("Olahraga", "Badminton jam 8 malam"),
+  ];
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
+    return <String, dynamic> {
       'id': id,
-      'title': title,
-      'description': description,
-      'completed': completed,
+      'nama': nama,
+      'deskripsi': deksripsi,
+      'done': done
     };
   }
 
   factory Todo.fromMap(Map<String, dynamic> map) {
     return Todo(
-      id: map['id'] as int,
-      title: map['title'] as String,
-      description: map['description'] as String,
-      completed: map['completed'] == 0 ? false : true,
+      map['nama'] as String,
+      map['deskripsi'] as String,
+      done: map['done'] == 0 ? false : true,
+      id: map['id'],
     );
   }
 }
